@@ -12,16 +12,37 @@ registrati.addEventListener("click", function(){
     if(!(emailReg=="" || emailRegCon=="" || passwordReg=="" || passwordRegCon=="")){
         // Verifico che le email e le password corrispondano
         if(emailReg==emailRegCon && passwordReg==passwordRegCon){
-            let puoiRegistrarti = true;
-            for(let i=0; i<utenti.length; i++){
-                if(emailReg==utenti[i][0]){
-                    puoiRegistrarti = false;
-                    console.log("Errore. Email già in uso");
+            // Validazione indirizzo email
+            let chiocciola = false;
+            let punto = false;
+            for(let i=0; i<emailReg.length; i++){
+                if(emailReg.charAt(i)=="@"){
+                    chiocciola = true;
+                }
+                if(emailReg.charAt(i)=="."){
+                    punto = true;
                 }
             }
-            if(puoiRegistrarti==true){
-                utenti.push([emailReg, passwordReg]);
-                console.log("Registrazione avvenuta con successo");
+            if(chiocciola==true && punto==true){
+                let puoiRegistrarti = true;
+                for(let i=0; i<utenti.length; i++){
+                    if(emailReg==utenti[i][0]){
+                        puoiRegistrarti = false;
+                        console.log("Errore. Email già in uso");
+                    }
+                }
+                if(puoiRegistrarti==true){
+                    utenti.push([emailReg, passwordReg]);
+                    console.log("Registrazione avvenuta con successo");
+                }
+            }else{
+                if(chiocciola==false && punto==false){
+                    console.log("L'indirizzo email deve contenere necessariamente una '@' e un '.'")
+                }else if(chiocciola==false){
+                    console.log("L'indirizzo email deve contenere necessariamente una '@'");
+                }else if(punto==false){
+                    console.log("L'indirizzo email deve contenere necessariamente un '.'");
+                }
             }
         }else{
             if(emailReg!=emailRegCon && passwordReg!=passwordRegCon){
