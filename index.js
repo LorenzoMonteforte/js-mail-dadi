@@ -24,16 +24,44 @@ registrati.addEventListener("click", function(){
                 }
             }
             if(chiocciola==true && punto==true){
-                let puoiRegistrarti = true;
-                for(let i=0; i<utenti.length; i++){
-                    if(emailReg==utenti[i][0]){
-                        puoiRegistrarti = false;
-                        console.log("Errore. Email già in uso");
+                // Validazione password
+                if(passwordReg.length>=8 && passwordReg.length<=16){
+                    let minuscolo = false;
+                    let maiuscolo = false;
+                    let numero = false;
+                    for(let i=0; i<passwordReg.length; i++){
+                        if(passwordReg.charAt(i)==passwordReg.charAt(i).toLowerCase()){
+                            if(isNaN(passwordReg.charAt(i))){
+                                minuscolo = true;
+                            }
+                        }
+                        if(passwordReg.charAt(i)==passwordReg.charAt(i).toUpperCase()){
+                            if(isNaN(passwordReg.charAt(i))){
+                                maiuscolo = true;
+                            }
+                        }
+                        if(!(isNaN(passwordReg.charAt(i)))){
+                            numero = true;
+                        }
+                        
                     }
-                }
-                if(puoiRegistrarti==true){
-                    utenti.push([emailReg, passwordReg]);
-                    console.log("Registrazione avvenuta con successo");
+                    if(numero==true && maiuscolo==true && minuscolo==true){
+                        let puoiRegistrarti = true;
+                        for(let i=0; i<utenti.length; i++){
+                            if(emailReg==utenti[i][0]){
+                                puoiRegistrarti = false;
+                                console.log("Errore. Email già in uso");
+                            }
+                        }
+                        if(puoiRegistrarti==true){
+                            utenti.push([emailReg, passwordReg]);
+                            console.log("Registrazione avvenuta con successo");
+                        }
+                    }else{
+                        console.log("Errore. La password deve contenere almeno una minuscola, una maiuscola e un numero");
+                    }
+                }else{
+                    console.log("La password deve essere compresa fra 8 e 16 caratteri");
                 }
             }else{
                 if(chiocciola==false && punto==false){
