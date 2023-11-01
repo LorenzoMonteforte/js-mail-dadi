@@ -1,12 +1,16 @@
 // Array utenti registrati
 const utenti = [["lorenzomonteforte@gmail.com", "lormon123"], ["alessiomonteforte@gmail.com", "alemon123"], ["andreamonteforte@gmail.com", "andmon123"]];
-let registrati = document.getElementById("registrati");
+// Click bottone registrati
+const registrati = document.getElementById("registrati");
 registrati.addEventListener("click", function(){
-    let emailReg = document.getElementById("emailReg").value;
-    let emailRegCon = document.getElementById("emailRegCon").value;
-    let passwordReg = document.getElementById("passwordReg").value;
-    let passwordRegCon = document.getElementById("passwordRegCon").value;
+    // Input email e password utente (registrati)
+    const emailReg = document.getElementById("emailReg").value;
+    const emailRegCon = document.getElementById("emailRegCon").value;
+    const passwordReg = document.getElementById("passwordReg").value;
+    const passwordRegCon = document.getElementById("passwordRegCon").value;
+    // Verifico che l'utente abbia compilato i campi (registrati)
     if(!(emailReg=="" || emailRegCon=="" || passwordReg=="" || passwordRegCon=="")){
+        // Verifico che le email e le password corrispondano
         if(emailReg==emailRegCon && passwordReg==passwordRegCon){
             let puoiRegistrarti = true;
             for(let i=0; i<utenti.length; i++){
@@ -35,10 +39,10 @@ registrati.addEventListener("click", function(){
 // Click bottone accedi
 const accedi = document.getElementById("accedi");
 accedi.addEventListener("click", function(){
-    // Input email e password utente
+    // Input email e password utente (accedi)
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    // Verifico che l'utente abbia compilato i campi
+    // Verifico che l'utente abbia compilato i campi (accedi)
     if(!(email=="" || password=="")){
         // Verifico se l'utente è registrato
         let puoiAccedere = false;
