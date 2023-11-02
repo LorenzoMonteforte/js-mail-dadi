@@ -51,6 +51,7 @@ registrati.addEventListener("click", function(){
                             if(emailReg==utenti[i][0]){
                                 puoiRegistrarti = false;
                                 console.log("Errore. Email già in uso");
+                                break;
                             }
                         }
                         if(puoiRegistrarti==true){
@@ -103,6 +104,7 @@ accedi.addEventListener("click", function(){
                 }else{
                     console.log("Password errata. Riprova");
                 }
+                break;
             }
         }
         if(puoiAccedere==false){
